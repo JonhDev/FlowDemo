@@ -8,10 +8,16 @@ import kotlinx.coroutines.launch
 
 class FlowViewModel: ViewModel() {
 
-    private val repository = FlowRepository()
+    private val useCaseWithCache = FlowWithCacheUseCase()
+    private val useCaseNoCache = FlowUseCase()
 
     fun getData() = liveData {
-        repository.getData().collect {
+        val useCache = true
+        if (useCache) {
+            useCaseWithCache()
+        }else {
+            useCaseNoCache()
+        }.collect {
             emit(it)
         }
     }

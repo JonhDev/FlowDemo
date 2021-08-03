@@ -5,7 +5,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.jonhbravo.flowdemo.databinding.ActivityMainBinding
 import com.jonhbravo.flowdemo.models.FlowState
-import com.jonhbravo.flowdemo.models.UiModel
+import com.jonhbravo.flowdemo.models.ApiModel
 import com.jonhbravo.flowdemo.views.UiView
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun showListIfAvailable(data: UiModel?) {
+    private fun showListIfAvailable(data: ApiModel?) {
         data?.let {
             viewAdapter.clear()
             viewAdapter.addAll(it.data.map { text ->
